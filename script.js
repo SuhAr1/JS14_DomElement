@@ -2,12 +2,13 @@
 
 let body =document.querySelector('body');
 
-function DomElement(selector, height, width, bg, fontSize) {
+function DomElement(selector, height, width, bg, fontSize, text) {
     this.selector = selector;
     this.height = height;
     this.width = width;
     this.bg = bg;
     this.fontSize = fontSize;
+    this.text =text;
 }
 
 DomElement.prototype.createElem = function () {
@@ -21,7 +22,7 @@ DomElement.prototype.createElem = function () {
     } else {
         console.error('Не тот селектор');
     }
-    element.textContent = 'Задание выполнено';
+    element.textContent = this.text;
     element.style.cssText = `height: ${this.height};
         width: ${this.width};
         background: ${this.bg};
@@ -32,5 +33,5 @@ DomElement.prototype.createElem = function () {
     body.append(element);
 };
 
-let newObj = new DomElement('#111', '70px', '140px', 'red', '30px');
+let newObj = new DomElement('#111', '70px', '140px', 'red', '30px', 'Задание выполнено');
 newObj.createElem();
